@@ -137,15 +137,11 @@ async def bcast(_, m : Message):
         try:
             userid = usrs["user_id"]
             #print(int(userid))
-            if not m.reply_to_message:
-                await m.reply_text("`Reply message men`")
             if m.reply_to_message:
                 await m.reply_to_message.copy(int(userid))
             success +=1
         except FloodWait as ex:
             await asyncio.sleep(ex.value)
-            if m.reply_to_message:
-                await m.reply_to_message.copy(int(userid))
         except errors.InputUserDeactivated:
             deactivated +=1
             remove_user(userid)
