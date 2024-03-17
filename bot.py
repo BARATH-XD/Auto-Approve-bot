@@ -138,7 +138,7 @@ async def bcast(_, m : Message):
             userid = usrs["user_id"]
             #print(int(userid))
             if not m.reply_to_message:
-                await message.reply_text("`Reply message men`")
+                await m.reply_text("`Reply message men`")
             if m.reply_to_message:
                 await m.reply_to_message.copy(int(userid))
             success +=1
